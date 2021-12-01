@@ -222,11 +222,23 @@ form.addEventListener('keyup', e => {
 // Checks for the required fields before submission and 
 // prevents the form from submitting if there are invalid fields
 form.addEventListener('submit', e => {
-    if (!nameValidator() && !emailValidator() && !activitiesValidator()) { 
+    if (!nameValidator()) { 
+        e.preventDefault(); 
+    }
+    if (!emailValidator()) { 
+        e.preventDefault(); 
+    }
+    if (!activitiesValidator()) { 
         e.preventDefault(); 
     }
     if (payment.value === 'credit-card') {
-        if ( !cardNumberValidator() && !zipCodeValidator() && !cvvValidator() ) {
+        if (!cardNumberValidator()) {
+            e.preventDefault();
+        }
+        if (!zipCodeValidator()) {
+            e.preventDefault();
+        }
+        if (!cvvValidator()) {
             e.preventDefault();
         }
     }
